@@ -1,0 +1,46 @@
+<?page title="CRUD User" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="CRUD User" border="normal"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('com.ipi.zk.pertama.CrudUserVM')"
+		validationMessages="@id('vmsgs')">
+		
+		<separator />
+		<vbox>
+			<hbox>
+				<cell width="100px"><label value="User Name" /></cell>
+				<textbox value="@bind(vm.current.userName)" />
+			</hbox>
+			
+			<hbox>
+				<cell width="100px"><label value="Password" /></cell>
+				<textbox value="@bind(vm.current.password)" type="password" />
+			</hbox>
+			<separator />
+			<hbox>
+				<cell width="100px" />
+				<button label="Simpan" onClick="@command('save')" />
+				<!-- <button label="Update" onClick="@command('update')" /> -->
+				<button label="Reset" onClick="@command('reset')" />
+				<button label="Cari" onClick="@command('search')" />
+			</hbox>
+		</vbox>
+		<separator />
+		
+		<listbox mold="paging" pageSize="10" pagingPosition="both"
+			selectedItem="@bind(vm.current)" model="@load(vm.listModel)">
+			<listhead>
+				<listheader width="100px" label="UserName" sort="auto(userName)" />
+				<listheader label="Password" sort="auto(password)"  />
+			</listhead>
+			<template name="model" var="p1">
+				<listitem>
+					<listcell label="@load(p1.userName)" />
+					<listcell label="@load(p1.password)" />
+				</listitem>
+			</template>
+			
+		</listbox>
+	
+	</window>
+</zk>

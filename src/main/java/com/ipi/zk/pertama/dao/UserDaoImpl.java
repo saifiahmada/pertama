@@ -1,5 +1,7 @@
 package com.ipi.zk.pertama.dao;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,6 +38,11 @@ public class UserDaoImpl implements UserDao {
 	public int count() {
 		// TODO , masbro
 		return sessionFactory.getCurrentSession().createQuery("select u from User u").list().size();
+	}
+	@SuppressWarnings("unchecked")
+	@Transactional(readOnly=true)
+	public List<User> getAll() {
+		return sessionFactory.getCurrentSession().createQuery("select u from User u").list();
 	}
 
 }

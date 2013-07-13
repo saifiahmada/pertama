@@ -4,7 +4,7 @@
 		viewModel="@id('vm') @init('com.ipi.zk.pertama.UserVM')"
 		validationMessages="@id('vmsgs')">
 		
-		<label value="@bind(vm.jumlah)" />
+		Count : <label value="@bind(vm.jumlah)" />
 		
 	</window>
 </zk>

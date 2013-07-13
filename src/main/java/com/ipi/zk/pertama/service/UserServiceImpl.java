@@ -1,5 +1,7 @@
 package com.ipi.zk.pertama.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -37,6 +39,10 @@ public class UserServiceImpl implements UserService {
 	public int count() {
 		// TODO , masbro
 		return userDao.count();
+	}
+
+	public List<User> getAll() {
+		return userDao.getAll();
 	}
 
 }
