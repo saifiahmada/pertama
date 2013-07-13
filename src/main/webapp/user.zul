@@ -1,0 +1,10 @@
+<?page title="User" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window apply="org.zkoss.bind.BindComposer" 
+		viewModel="@id('vm') @init('com.ipi.zk.pertama.UserVM')"
+		validationMessages="@id('vmsgs')">
+		
+		<label value="@bind(vm.jumlah)" />
+		
+	</window>
+</zk>
