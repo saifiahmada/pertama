@@ -1,0 +1,53 @@
+<?page title="Pembelian" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Pembelian" border="normal"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('com.ipi.zk.pertama.viewmodel.PembelianVM')">
+	
+		<groupbox>
+			<caption label="Pembelian" />
+			<vbox>
+				<hbox>
+					<cell width="100px"><label value="Tanggal" /></cell>
+					<cell width="100px"><datebox value="@bind(vm.hdr.tgl)" format="dd-MM-yyyy" /></cell>
+					
+				</hbox>
+				<hbox>
+					<cell width="100px"><label value="Id Barang" /></cell>
+					<cell width="100px"><textbox value="@bind(vm.dtl.pembelianDtlPK.barangId)"  /></cell>
+					<cell><label value="Qty" /></cell>
+					<cell><intbox value="@bind(vm.dtl.qty)" /></cell>
+					<cell><button label="Add Detail" onClick="@command('addDetail')" /> </cell>
+					<cell><button label="Delete Detail" onClick="@command('deleteDetail')" /> </cell>
+				</hbox>
+				<hbox>
+					<cell width="100px"/>
+					<listbox width="250px" model="@load(vm.listModelDtl)" selectedItem="@bind(vm.dtl)">
+						<listhead>
+							<listheader width="100px" label="Barang" sort="auto" />
+							<listheader label="Qty" sort="auto" />
+							<listheader label="Pilih" sort="auto" />
+						</listhead>
+						<template name="model" var="p">
+							<listitem>
+								<listcell label="@load(p.pembelianDtlPK.barangId)" />
+								<listcell label="@load(p.qty)" />
+								<listcell>
+									<checkbox onCheck="@command('cek', checked=self.checked, picked=p)" />
+								</listcell>
+							</listitem>
+						</template>
+					</listbox>
+				</hbox>
+				
+			</vbox>
+		</groupbox>
+		<separator />
+		<hbox>
+					<cell width="100px" />
+					<button label="Save" onClick="@command('save')" />
+					<button label="Reset" onClick="@command('reset')" />
+					<button label="Search" onClick="@command('search')" />
+				</hbox>
+	</window>
+</zk>

@@ -1,0 +1,49 @@
+<?page title="Surah" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Surah" border="normal" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('com.ipi.zk.pertama.SurahVM')">
+	<separator />
+	<vbox>
+		<hbox>
+			<cell width="100px" ><label value="No Surah" /></cell><intbox value="@bind(vm.current.noSurah)" focus="@load(vm.focus)" />
+		</hbox>
+		<hbox>
+			<cell width="100px" ><label value="Nama Surah" /></cell><textbox value="@bind(vm.current.namaSurah)" style="text-transform:uppercase" />
+		</hbox>
+		<hbox>
+			<cell width="100px" ><label value="Tempat Turun" /></cell><textbox value="@bind(vm.current.tempatTurun)" />
+		</hbox>
+		<hbox>
+			<cell width="100px" ><label value="Arti Surah" /></cell><textbox value="@bind(vm.current.artiSurah)" width="250px"/>
+		</hbox>
+		<hbox>
+			<cell width="100px" ><label value="Urutan Turun" /></cell><intbox value="@bind(vm.current.urutanTurun)" />
+		</hbox>
+		<hbox>
+			<button label="Simpan" onClick="@command('save')" />
+		</hbox>
+	</vbox>
+	<separator />
+	
+	<listbox model="@load(vm.listModel)" selectedItem="@bind(vm.current)" mold="paging" pagingPosition="both" pageSize="10">
+		<listhead>
+			<listheader width="100px" label="No Surah" sort="auto(noSurah)" />
+			<listheader width="150px" label="Nama Surah" sort="auto(namaSurah)" />
+			<listheader width="150px" label="Jumlah Ayat" sort="auto(jumlahAyat)" />
+			<listheader width="150px" label="Tempat Turun" sort="auto(tempatTurun)" />
+			<listheader width="250px" label="Arti Surah" sort="auto(artiSurah)" />
+			<listheader label="Urutan Turun" sort="auto(urutanTurun)" />
+		</listhead>
+		<template name="model" var="p1">
+			<listitem>
+				<listcell label="@load(p1.noSurah)" />
+				<listcell label="@load(p1.namaSurah)" />
+				<listcell label="@load(p1.jumlahAyat)" />
+				<listcell label="@load(p1.tempatTurun)" />
+				<listcell label="@load(p1.artiSurah)" />
+				<listcell label="@load(p1.urutanTurun)" />
+			</listitem>	
+		</template>
+	</listbox>
+
+</window>
+</zk>

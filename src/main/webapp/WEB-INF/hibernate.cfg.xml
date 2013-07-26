@@ -30,6 +30,9 @@
 
         <!-- Names the annotated entity class -->
         <mapping class="com.ipi.zk.pertama.bean.User"/>
+        <mapping class="com.ipi.zk.pertama.bean.Pembelian"/>
+        <mapping class="com.ipi.zk.pertama.bean.PembelianDtl"/>
+        <mapping class="com.ipi.zk.pertama.bean.Surah"/>
 
 
     </session-factory>
